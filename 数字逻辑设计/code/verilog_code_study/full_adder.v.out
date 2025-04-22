@@ -1,0 +1,88 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "D:\All_The_App\iverilog\iverilog\lib\ivl\system.vpi";
+:vpi_module "D:\All_The_App\iverilog\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "D:\All_The_App\iverilog\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "D:\All_The_App\iverilog\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "D:\All_The_App\iverilog\iverilog\lib\ivl\va_math.vpi";
+S_00000247d947d8e0 .scope module, "test" "test" 2 9;
+ .timescale 0 0;
+v00000247d950e660_0 .var "Ai", 0 0;
+v00000247d950e340_0 .var "Bi", 0 0;
+v00000247d950e2a0_0 .var "Ci", 0 0;
+v00000247d950d8a0_0 .net "Co", 0 0, L_00000247d950e5c0;  1 drivers
+v00000247d950e200_0 .net "So", 0 0, L_00000247d950de40;  1 drivers
+S_00000247d947da70 .scope module, "u_adder" "full_adder" 2 22, 2 1 0, S_00000247d947d8e0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "Ai";
+    .port_info 1 /INPUT 1 "Bi";
+    .port_info 2 /INPUT 1 "Ci";
+    .port_info 3 /OUTPUT 1 "So";
+    .port_info 4 /OUTPUT 1 "Co";
+v00000247d9492510_0 .net "Ai", 0 0, v00000247d950e660_0;  1 drivers
+v00000247d94c3e00_0 .net "Bi", 0 0, v00000247d950e340_0;  1 drivers
+v00000247d94c3ea0_0 .net "Ci", 0 0, v00000247d950e2a0_0;  1 drivers
+v00000247d94c3f40_0 .net "Co", 0 0, L_00000247d950e5c0;  alias, 1 drivers
+v00000247d94c3fe0_0 .net "So", 0 0, L_00000247d950de40;  alias, 1 drivers
+L_00000247d950e8b0 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v00000247d94c4080_0 .net *"_ivl_10", 0 0, L_00000247d950e8b0;  1 drivers
+v00000247d94c4120_0 .net *"_ivl_11", 1 0, L_00000247d950e520;  1 drivers
+v00000247d94c41c0_0 .net *"_ivl_13", 1 0, L_00000247d950e7a0;  1 drivers
+L_00000247d950e8f8 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v00000247d94c4260_0 .net *"_ivl_16", 0 0, L_00000247d950e8f8;  1 drivers
+v00000247d94c4390_0 .net *"_ivl_17", 1 0, L_00000247d950e3e0;  1 drivers
+v00000247d94c4430_0 .net *"_ivl_3", 1 0, L_00000247d950e0c0;  1 drivers
+L_00000247d950e868 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v00000247d950e700_0 .net *"_ivl_6", 0 0, L_00000247d950e868;  1 drivers
+v00000247d950d9e0_0 .net *"_ivl_7", 1 0, L_00000247d950dd00;  1 drivers
+L_00000247d950e5c0 .part L_00000247d950e3e0, 1, 1;
+L_00000247d950de40 .part L_00000247d950e3e0, 0, 1;
+L_00000247d950e0c0 .concat [ 1 1 0 0], v00000247d950e660_0, L_00000247d950e868;
+L_00000247d950dd00 .concat [ 1 1 0 0], v00000247d950e340_0, L_00000247d950e8b0;
+L_00000247d950e520 .arith/sum 2, L_00000247d950e0c0, L_00000247d950dd00;
+L_00000247d950e7a0 .concat [ 1 1 0 0], v00000247d950e2a0_0, L_00000247d950e8f8;
+L_00000247d950e3e0 .arith/sum 2, L_00000247d950e520, L_00000247d950e7a0;
+    .scope S_00000247d947d8e0;
+T_0 ;
+    %pushi/vec4 0, 0, 3;
+    %split/vec4 1;
+    %store/vec4 v00000247d950e2a0_0, 0, 1;
+    %split/vec4 1;
+    %store/vec4 v00000247d950e340_0, 0, 1;
+    %store/vec4 v00000247d950e660_0, 0, 1;
+T_0.0 ;
+    %delay 10, 0;
+    %load/vec4 v00000247d950e660_0;
+    %load/vec4 v00000247d950e340_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v00000247d950e2a0_0;
+    %concat/vec4; draw_concat_vec4
+    %addi 1, 0, 3;
+    %split/vec4 1;
+    %store/vec4 v00000247d950e2a0_0, 0, 1;
+    %split/vec4 1;
+    %store/vec4 v00000247d950e340_0, 0, 1;
+    %store/vec4 v00000247d950e660_0, 0, 1;
+    %jmp T_0.0;
+    %end;
+    .thread T_0;
+    .scope S_00000247d947d8e0;
+T_1 ;
+T_1.0 ;
+    %delay 100, 0;
+    %vpi_func 2 33 "$time" 64 {0 0 0};
+    %cmpi/u 1000, 0, 64;
+    %flag_inv 5; GE is !LT
+    %jmp/0xz  T_1.1, 5;
+    %vpi_call 2 34 "$finish" {0 0 0};
+T_1.1 ;
+    %jmp T_1.0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "full_adder.v";
